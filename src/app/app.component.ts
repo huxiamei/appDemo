@@ -45,11 +45,14 @@ export class MyApp {
     { title: 'Search', component: 'SearchPage' }
   ]
 
-  constructor(private translate: TranslateService, platform: Platform, settings: Settings, private config: Config, private statusBar: StatusBar, private splashScreen: SplashScreen) {
+  constructor(private translate: TranslateService, platform: Platform, settings: Settings,
+              private config: Config, private statusBar: StatusBar, private splashScreen: SplashScreen) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
-      this.statusBar.styleDefault();
+      this.statusBar.overlaysWebView(true);//沉浸式状态栏
+      // this.statusBar.styleLightContent();
+      this.statusBar.backgroundColorByHexString("#00000000");
       this.splashScreen.hide();
     });
     this.initTranslate();
